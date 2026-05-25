@@ -1,0 +1,11 @@
+{
+  "name": "qa-skills",
+  "version": "1.0.0",
+  "description": "QA 测试工程师全流程 Skills：需求分析（五步分析法）→ 用例设计（正向/反向/边界/等价类/场景法）→ 用例评审（四维度）→ 接口测试（五维度+安全检查）→ 缺陷报告（五类特殊场景）。覆盖功能测试、接口测试、性能测试、自动化候选标记。",
+  "author": {
+    "name": "mubai",
+    "email": ""
+  },
+  "license": "MIT",
+  "keywords": ["testing", "qa", "test-case", "api-testing", "bug-report", "case-review", "prd-analysis", "chinese"]
+}
