@@ -5,8 +5,7 @@
 ### 方式一：GitHub 插件安装（推荐，跨项目复用）
 
 ```bash
-# 替换 <your-username>/qa-skills-plugin 为实际仓库地址
-claude plugins install <your-username>/qa-skills-plugin
+claude plugins install mubai23/qa-skills-plugin
 ```
 
 更新插件：
