@@ -2,18 +2,25 @@
 
 ## 安装方式
 
-### 方式一：GitHub 插件安装（推荐，跨项目复用）
+### 方式一：插件安装（推荐，跨项目复用，支持自动更新）
 
-```bash
-claude plugins install mubai23/qa-skills-plugin
+**首次安装（3 步）：**
+
+```
+/plugin marketplace add mubai23/qa-skills
+/plugin install qa-skills@qa-skills
+/reload-plugins
 ```
 
-更新插件：
-```bash
-claude plugins update qa-skills
+**日常更新（已安装成员，2 步）：**
+
+```
+/plugin marketplace update qa-skills
+/plugin update qa-skills@qa-skills
+/reload-plugins
 ```
 
-### 方式二：手动安装
+### 方式二：手动安装（独立 Skill，短名称，无自动更新）
 
 ```bash
 # 项目级（只对当前项目生效）
@@ -22,6 +29,8 @@ cp -r skills/* .claude/skills/
 # 用户级（所有项目生效）
 cp -r skills/* ~/.claude/skills/
 ```
+
+> **插件 vs 独立的区别**：插件安装后 skill 以 `/qa-skills:prd-analysis` 形式调用（带命名空间前缀）；独立安装后以 `/prd-analysis` 短名称调用。前者适合团队统一管理分发，后者适合个人快速使用。
 
 ---
 
@@ -120,23 +129,25 @@ POST /api/user/register，参数：username、password、phone，帮我设计接
 
 ## 推荐工作流
 
+> **调用方式**：插件安装用 `/qa-skills:prd-analysis`（带命名空间前缀），手动安装用 `/prd-analysis`（短名称）。下文统一用插件形式示例。
+
 ### 功能测试标准流程
 
 ```
 1. 拿到需求后
-   → /prd-analysis 做需求分析
+   → /qa-skills:prd-analysis 做需求分析
    → 确认分析结果，和产品/开发对齐疑问点
 
 2. 写用例
-   → /case-design 生成用例初稿
+   → /qa-skills:case-design 生成用例初稿
    → 人工审核和调整
 
 3. 评审前
-   → /case-review 做自检
+   → /qa-skills:case-review 做自检
    → 修改问题后提交正式评审
 
 4. 测试执行中发现 bug
-   → /bug-report 生成规范报告
+   → /qa-skills:bug-report 生成规范报告
    → 提交到缺陷管理系统
 ```
 
@@ -144,11 +155,11 @@ POST /api/user/register，参数：username、password、phone，帮我设计接
 
 ```
 1. 拿到接口文档
-   → /api-test 生成接口测试用例
+   → /qa-skills:api-test 生成接口测试用例
    → 导出测试数据用于 Postman/自动化
 
 2. 发现接口 bug
-   → /bug-report 生成缺陷报告
+   → /qa-skills:bug-report 生成缺陷报告
 ```
 
 ### 没有代码权限时
