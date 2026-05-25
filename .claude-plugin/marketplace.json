@@ -10,8 +10,7 @@
         "source": "github",
         "repo": "mubai23/qa-skills"
       },
-      "description": "QA 测试工程师全流程 Skills：需求分析(prd-analysis)、用例设计(case-design)、用例评审(case-review)、接口测试(api-test)、缺陷报告(bug-report)",
-      "version": "1.0.0"
+      "description": "QA 测试工程师全流程 Skills：需求分析(prd-analysis)、用例设计(case-design)、用例评审(case-review)、接口测试(api-test)、缺陷报告(bug-report)"
     }
   ]
 }
