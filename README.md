@@ -38,7 +38,7 @@ cp -r skills/* ~/.claude/skills/
 
 ### 1. `prd-analysis` — 需求分析
 
-**作用**：五步分析法（功能边界→业务规则→数据状态→等价类划分→风险点），输出带编号的业务规则清单（BR-xxx），为后续用例设计打基础。
+**作用**：五步分析法（功能边界→业务规则→数据状态→等价类划分→风险点），输出带优先级（P0/P1/P2）的业务规则清单（BR-xxx）和可执行的风险建议，为后续用例设计打基础。
 
 **触发方式**：
 ```
@@ -74,9 +74,10 @@ cp -r skills/* ~/.claude/skills/
 
 **支持的标准**（`references/`）：
 - `functional-testcases-standard.md` — 功能测试
-- `api-testcases-standard.md` — 接口测试
 - `performance-testcases-standard.md` — 性能测试
 - `automation-testcases-standard.md` — 自动化候选
+
+> 接口测试用例请使用 `api-test` Skill，`api-testcases-standard.md` 不在本 Skill 中使用。
 
 **Excel 导出**：`scripts/export_to_excel.py <markdown_file> [output_dir]`
 
@@ -99,7 +100,7 @@ cp -r skills/* ~/.claude/skills/
 
 ### 4. `api-test` — 接口测试
 
-**作用**：覆盖正常场景、参数异常、认证权限、业务逻辑、并发幂等五个维度，内置 SQL 注入/XSS/越权/敏感信息泄露等安全检查，输出可直接用于 Postman 的用例表和 curl 示例。
+**作用**：覆盖正常场景、参数异常、认证权限、业务逻辑、并发幂等五个维度，内置 SQL 注入/XSS/越权/敏感信息泄露安全检查及文件上传专项覆盖，输出 curl 示例和可直接导入 Postman 的用例表，支持导出 `.postman_collection.json`。
 
 **触发方式**：
 ```
@@ -114,7 +115,7 @@ POST /api/user/register，参数：username、password、phone，帮我设计接
 
 ### 5. `bug-report` — 缺陷报告
 
-**作用**：内置严重程度判断标准和"好/差对比"示例，对概率复现、接口 bug、UI bug、数据 bug 四类特殊情况有专门处理逻辑。
+**作用**：内置严重程度自动判断（致命/严重/一般/轻微），对功能、接口、UI、数据、性能五类缺陷及概率复现场景有专门的附加字段模板。
 
 **触发方式**：
 ```
